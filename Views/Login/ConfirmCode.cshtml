@@ -1,0 +1,95 @@
+﻿@{
+    Layout = "~/Views/Shared/_LoginLayout.cshtml";
+}
+
+<style>
+
+    #confirmCodeDiv {
+        font-family: 'Arial', sans-serif;
+        background-color: #f4f4f4;
+        margin: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+    }
+
+    .confirmation-container {
+        background-color: #fff;
+        border-radius: 12px;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+        padding: 30px;
+        text-align: center;
+        width: 800px; /* Genişliği 500px olarak ayarlayabilirsiniz */
+    }
+
+    h2 {
+        color: #333;
+        font-size: 28px; /* Başlık font boyutunu artırabilirsiniz */
+        margin-bottom: 20px; /* Alt boşluğu artırabilirsiniz */
+    }
+
+    p {
+        color: #666;
+        font-size: 18px; /* Paragraf font boyutunu artırabilirsiniz */
+        margin-bottom: 30px; /* Alt boşluğu artırabilirsiniz */
+    }
+
+    form {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 10px; /* Input kutuları arasındaki boşluğu artırabilirsiniz */
+    }
+
+    input {
+        width: 50px; /* Input kutularının genişliğini artırabilirsiniz */
+        height: 50px; /* Input kutularının yüksekliğini artırabilirsiniz */
+        font-size: 24px; /* Input kutularının font boyutunu artırabilirsiniz */
+        text-align: center;
+        margin: 0 5px;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+    }
+
+    button {
+        background-color: #4caf50;
+        color: #fff;
+        border: none;
+        padding: 15px 30px;
+        font-size: 20px; /* Düğme font boyutunu artırabilirsiniz */
+        cursor: pointer;
+        border-radius: 8px;
+        margin-top: 20px; /* Üst boşluğu artırabilirsiniz */
+    }
+
+    .resend-link {
+        margin-top: 25px; /* Üst boşluğu artırabilirsiniz */
+        color: #666;
+        font-size: 18px; /* Link font boyutunu artırabilirsiniz */
+    }
+
+        .resend-link a {
+            color: #4caf50;
+            text-decoration: none;
+            font-weight: bold;
+        }
+</style>
+
+<div id="confirmCodeDiv" style="background-color:gray;">
+    <div class="confirmation-container">
+        <h2>Confirmation Code</h2>
+        <p>Enter the 6-digit code sent to your email:</p>
+        <form id="confirmation-form">
+            <input type="text" maxlength="1" />
+            <input type="text" maxlength="1" />
+            <input type="text" maxlength="1" />
+            <input type="text" maxlength="1" />
+            <input type="text" maxlength="1" />
+            <input type="text" maxlength="1" />
+            <button type="button" onclick="submitCode()">Submit</button>
+        </form>
+        <p class="resend-link">Didn't receive the code? <a href="#">Resend</a></p>
+    </div>
+
+</div>

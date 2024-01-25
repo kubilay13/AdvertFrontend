@@ -1,0 +1,128 @@
+﻿@{
+    Layout = "~/Views/Shared/_LoginLayout.cshtml";
+}
+
+<div class="limiter" style="background-color:gray;">
+    <div class="row container-login100">
+        <div class=" justify-content-center wrap-login100">
+
+            <form class="login200-form validate-form">
+                <span class="login100-form-title" style="color:black;">
+                    Üye Ol
+                </span>
+                <div class="form-row">
+                    <div class="col-md-6 wrap-input100 validate-input" data-validate="Geçerli e-posta gereklidir: user@abc.com">
+                        <input class="input100" id="Email" type="text" name="email" placeholder="Email">
+                        <span class="focus-input100"></span>
+                        <span class="symbol-input100">
+                            <i class="fa fa-envelope" aria-hidden="true"></i>
+                        </span>
+                    </div>
+                    <div class="col-md-6 wrap-input100 validate-input">
+                        <input class="input100" id="UserName" type="text" name="username" placeholder="Kullanıcı Adı">
+                        <span class="focus-input100"></span>
+                        <span class="symbol-input100">
+                            <i class="fa fa-user" aria-hidden="true"></i>
+                        </span>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="col-md-6 wrap-input100 validate-input">
+                        <input class="input100" id="Password" type="password" name="pass" placeholder="Şifre">
+                        <i class="fa fa-eye" id="eyeIcon" style="position: absolute; right: 20px; top: 50%; transform: translateY(-50%); cursor: pointer;" onclick="togglePassword('Password')"></i>
+                        <span class="focus-input100"></span>
+                        <span class="symbol-input100">
+                            <i class="fa fa-lock" aria-hidden="true"></i>
+                        </span>
+                    </div>
+                    <div class="col-md-6 wrap-input100 validate-input">
+                        <input class="input100" id="ConfirmPassword" type="password" name="confirmpass" placeholder="Şifreyi tekrar giriniz">
+                        <i class="fa fa-eye" id="eyeIconx" style="position: absolute; right: 20px; top: 50%; transform: translateY(-50%); cursor: pointer;" onclick="togglePasswordx('ConfirmPassword')"></i>
+                        <span class="focus-input100"></span>
+                        <span class="symbol-input100">
+                            <i class="fa fa-lock" aria-hidden="true"></i>
+                        </span>
+
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="col-md-6 wrap-input100 validate-input">
+                        <input class="input100" id="FirstName" type="text" name="firstname" placeholder="İsim">
+                        <span class="focus-input100"></span>
+                        <span class="symbol-input100">
+                            <i class="fa fa-user" aria-hidden="true"></i>
+                        </span>
+                    </div>
+                    <div class="col-md-6 wrap-input100 validate-input">
+                        <input class="input100" id="LastName" type="text" name="lastname" placeholder="Soyisim">
+                        <span class="focus-input100"></span>
+                        <span class="symbol-input100">
+                            <i class="fa fa-user" aria-hidden="true"></i>
+                        </span>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="col-md-7 wrap-input100 validate-input">
+                        <input class="input100" id="Adress" type="text" name="adress" placeholder="Açık Adres">
+                        <span class="focus-input100"></span>
+                        <span class="symbol-input100">
+                            <i class="fa fa-map-marker" aria-hidden="true"></i>
+                        </span>
+                    </div>
+                    <div class="col-md-5 wrap-input100 validate-input">
+                        <input class="input100" id="PhoneNumber" type="tel" pattern="[0-9]{11}" maxlength="11" name="phone" placeholder="Telefon">
+                        <span class="focus-input100"></span>
+                        <span class="symbol-input100">
+                            <i class="fa fa-phone" aria-hidden="true"></i>
+                        </span>
+                    </div>
+
+
+                </div>
+                <div class="container-login100-form-btn">
+                    <a class="login100-form-btn" style="color:white;" onclick="SignUp()">
+                        Üye Ol
+                    </a>
+                </div>
+
+                <div class="text-center p-t-136">
+                    <a class="txt2" href="/Login/SignIn" style="color:black;">
+                        Hesabın var mı?
+                        <i class="fa fa-long-arrow-right m-l-5" aria-hidden="true"></i>
+                    </a>
+                    <br />
+                    <a class="txt2" href="/Home/Index" style="color:black;">
+                        AnaSayfa
+                        <i class="fa fa-long-arrow-right m-l-5" aria-hidden="true"></i>
+                    </a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<script>
+    function togglePassword(inputId) {
+        var x = document.getElementById(inputId);
+        var eyeIcon = document.getElementById('eyeIcon');
+
+        if (x.type === "password") {
+            x.type = "text";
+            eyeIcon.className = 'fa fa-eye-slash'; // Kapalı göz ikonu
+        } else {
+            x.type = "password";
+            eyeIcon.className = 'fa fa-eye'; // Açık göz ikonu
+        }
+    }
+    function togglePasswordx(inputId) {
+        var x = document.getElementById(inputId);
+        var eyeIconx = document.getElementById('eyeIconx');
+
+        if (x.type === "password") {
+            x.type = "text";
+            eyeIconx.className = 'fa fa-eye-slash'; // Kapalı göz ikonu
+        } else {
+            x.type = "password";
+            eyeIconx.className = 'fa fa-eye'; // Açık göz ikonu
+        }
+    }
+</script>
