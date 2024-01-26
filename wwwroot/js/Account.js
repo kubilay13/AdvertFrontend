@@ -78,7 +78,7 @@ function SignIn() {
         success: function (response) {
             console.log(response);
             alert("Giriş Başarılı");
-            window.location.href = "/Home/Index";
+            window.location.href = "/Login/ConfirmCode?Email=" + response.data;
 
         },
         error: function (error) {
@@ -88,7 +88,6 @@ function SignIn() {
         }
     });
 }
-
 
 function SignUp() {
     debugger
@@ -171,4 +170,56 @@ function SignUp() {
             }
         });
     }
+}
+
+function SubmitConfirmCode() {
+    debugger
+    var Email = ConfirmData.email;
+    var code1 = document.getElementById("code1").value;
+    var code2 = document.getElementById("code2").value;
+    var code3 = document.getElementById("code3").value;
+    var code4 = document.getElementById("code4").value;
+    var code5 = document.getElementById("code5").value;
+    var code6 = document.getElementById("code6").value;
+
+    // Değerleri birleştir
+    var ConfirmCode = code1 + code2 + code3 + code4 + code5 + code6;
+    if (!ConfirmCode) {
+        alert("Lütfen kodu tam giriniz!");
+        return;
+    }
+    $.ajax({
+        url: 'https://localhost:7160/api/Account/ConfirmCode?Email=' + Email + '&ConfirmCode=' + ConfirmCode,
+        method: 'POST',
+        success: function (response) {
+            debugger
+            if (response.acsessToken != null) {
+                localStorage.setItem('token', response.token);
+                alert("Giriş Başarılı");
+                if (response.name == "Admin") {
+                    window.location.href = "/Admin/Index";
+                }
+                else if (response.name == "Moderator") {
+                    window.location.href = "/Admin/Index"
+                }
+                else if (response.name == "User") {
+                    window.location.href = "/User/Index"
+                }
+                else {
+                    alert("Kullanıcı Bulunamadı,Tekrar Giriş Yapınız");
+                    window.location.href = "/Login/SignUp"
+                }
+            }
+            else {
+                alert("Token Boş,Tekrar Giriş Yapınız");
+                window.location.href="/Login/SignUp"
+            }
+
+        },
+        error: function (error) {
+            debugger
+            console.error(error.responseText.error);
+            alert("İşlem sırasında bir hata oluştu." + error.responseText);
+        }
+    });
 }

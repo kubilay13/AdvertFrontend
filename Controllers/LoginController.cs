@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using AdvertFrontend.Models;
+using Microsoft.AspNetCore.Mvc;
 
 namespace AdvertFrontend.Controllers
 {
@@ -58,9 +59,11 @@ namespace AdvertFrontend.Controllers
         {
             return View();
         }
-        public IActionResult ConfirmCode()
+        public IActionResult ConfirmCode(string Email)
         {
-            return View();
+            ConfirmCodeViewModel model = new ConfirmCodeViewModel();
+            model.Email = Email;
+            return View(model);
         }
     }
 }

@@ -1,0 +1,235 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="~/sneat-1.0.0/assets/img/favicon/favicon.ico" />
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap"
+          rel="stylesheet" />
+
+    <!-- Icons. Uncomment required icon fonts -->
+    <link href="~/admin/fonts/boxicons.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-<hash-değer>" crossorigin="anonymous" />
+    <!-- Core CSS -->
+    <link href="~/admin/css/demo.css" rel="stylesheet" />
+    <link href="~/admin/css/theme-default.css" rel="stylesheet" />
+    <link href="~/admin/css/core.css" rel="stylesheet" />
+    <!-- Vendors CSS -->
+    <link href="~/admin/perfect-scrollbar/perfect-scrollbar.css" rel="stylesheet" />
+
+    <!-- Page CSS -->
+    <!-- Helpers -->
+    <script src="~/admin/js/helpers.js"></script>
+    <script src="~/js/jquery.js"></script>
+
+    <!--! Template customizer & Theme config files MUST be included after core stylesheets and helpers.js in the <head> section -->
+    <!--? Config:  Mandatory theme config file contain global vars & default theme options, Set your preferred theme option in this file.  -->
+    <script src="~/admin/js/config.js"></script>
+</head>
+<body>
+    <div class="layout-wrapper layout-content-navbar">
+        <div class="layout-container">
+            <aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme">
+
+                <div class="app-brand demo">
+                    <a href="/Admin/Index" class="app-brand-link">
+                        <span class="app-brand-logo demo">
+
+                            <img src="/images/stratton-oakmont.png" width="60" />
+                        </span>
+                        <span class="app-brand-text demo menu-text fw-bolder ms-2" id="PanelHeader">
+                            Stratton
+                            <br /> &nbsp;&nbsp;Panel
+                        </span>
+                    </a>
+
+                    <a href="javascript:void(0);" class="layout-menu-toggle menu-link text-large ms-auto d-xl-none align-item-center d-flex ">
+                        <i class="fas fa-arrow-left mt-2" style="text-align:center;"></i>
+                    </a>
+
+                </div>
+
+                <div class="menu-inner-shadow"></div>
+
+                <ul class="menu-inner py-1">
+                    <!-- Dashboard -->
+                    <li class="menu-item">
+                        <a href="/Admin/Index" class="menu-link">
+                            <i class="fas fa-home m-2"></i>
+                            <div data-i18n="Analytics">AnaSayfa</div>
+                        </a>
+                    </li>
+                  @*   @if (roles.Name == "Admin")
+                    {
+                        <li class="menu-item">
+                            <a href="/Admin/ModaretorManagement" class="menu-link">
+                                <i class="fas fa-user-shield m-2"></i>
+                                <div data-i18n="Analytics">Modaretor Yönetimi</div>
+                            </a>
+                        </li>
+                    } *@
+                    <li class="menu-item">
+                        <a href="/Admin/UserManagement" class="menu-link">
+                            <i class="fas fa-user m-2"></i>
+                            <div data-i18n="Analytics">Kullanıcı Yönetimi</div>
+                        </a>
+                    </li>
+                    <li class="menu-item">
+                        <a href="/Admin/CarOrder" class="menu-link">
+                            <i class="fas fa-car m-2"></i>
+                            <div data-i18n="Analytics">Araba İlan</div>
+                        </a>
+                    </li>
+                    <li class="menu-item">
+                        <a href="/Admin/SeaVehicleOrder" class="menu-link">
+                            <i class="fa fa-ship m-2"></i>
+                            <div data-i18n="Analytics">Deniz Araçları İlan</div>
+                        </a>
+                    </li>
+                    <li class="menu-item">
+                        <a href="/Admin/ContactUser" class="menu-link">
+                            <i class="fas fa-envelope m-2"></i>
+                            <div data-i18n="Analytics">İletişim</div>
+                        </a>
+                    </li>
+                    <li class="menu-item">
+                        <a href="/Home/Index" class="menu-link">
+                            <i class="fas fa-arrow-left m-2"></i>
+                            <div data-i18n="Analytics">Siteye Dön</div>
+                        </a>
+                    </li>
+                    <li class="menu-item">
+                        <a href="javascript:void(0);" onclick="SignOut()" class="menu-link">
+                            <i class="fas fa-sign-out-alt m-2"></i>
+                            <div data-i18n="Analytics">Çıkış Yap</div>
+                        </a>
+                    </li>
+                </ul>
+            </aside>
+            <div class="layout-page">
+
+                <nav class="layout-navbar container-xxl navbar navbar-expand-xl navbar-detached align-items-center bg-navbar-theme"
+                     id="layout-navbar">
+                    <div class="layout-menu-toggle navbar-nav align-items-xl-center me-3 me-xl-0 d-xl-none">
+                        <a class="nav-item nav-link px-0 me-xl-4" href="javascript:void(0)">
+                            <i class="fas fa-bars"></i>
+
+                        </a>
+                    </div>
+
+                    <div class="navbar-nav-right d-flex align-items-center" id="navbar-collapse">
+                        <img class="logo" src="/images/stratton-oakmont.png" width="50px" />
+                        <p class="strattonHeader">Stratton Panel</p>
+                        <!-- Search -->
+                        <div class="navbar-nav align-items-center">
+                            <div class="nav-item d-flex align-items-center">
+                            </div>
+                        </div>
+                        <!-- /Search -->
+
+                        <ul class="navbar-nav flex-row align-items-center ms-auto">
+                            <!-- User -->
+                            <li class="nav-item navbar-dropdown dropdown-user dropdown">
+                                <a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);" data-bs-toggle="dropdown">
+                                    <div class="avatar avatar-online">
+
+                                        <img src="/images/user.png" class="w-px-40 h-auto rounded-circle" id="userImage" />
+                                    </div>
+                                </a>
+                                <ul class="dropdown-menu dropdown-menu-end">
+                                    <li>
+                                        <a class="dropdown-item" href="#">
+                                            <div class="d-flex">
+                                                <div class="flex-shrink-0 me-3">
+                                                    <div class="avatar avatar-online">
+                                                        <i class="fas fa-user-tie fa-2x"></i>
+                                                    </div>
+
+                                                </div>
+                                                <div class="flex-grow-1">
+                                                    <span class="fw-semibold d-block">first , last</span>
+                                                    <small class="text-muted">first, last</small>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <div class="dropdown-divider"></div>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item" href="/Admin/MyProfil">
+                                            <i class="fas fa-user me-2"></i>
+                                            <span class="align-middle">Profilim</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <div class="dropdown-divider"></div>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item" href="javascript:void(0);" onclick="SignOut()">
+                                            <i class="fas fa-sign-out-alt me-2"></i>
+                                            <span class="align-middle">Çıkış Yap</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <!--/ User -->
+                        </ul>
+                    </div>
+                </nav>
+
+                <div class="content-wrapper">
+                    <div class="container-xxl flex-grow-1 container-p-y">
+
+                        @RenderBody()
+                    </div>
+
+                    <footer class="content-footer footer bg-footer-theme">
+                        <div class="container-xxl d-flex flex-wrap justify-content-between py-2 flex-md-row flex-column">
+                            <div class="mb-2 mb-md-0">
+                                ©
+                                <script>document.write(new Date().getFullYear());</script>
+
+                                <a href="/Admin/Index" target="_blank" class="footer-link fw-bolder"> Stratton Oakmount Inc.</a>
+                            </div>
+                        </div>
+                    </footer>
+
+                    <div class="content-backdrop fade"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="layout-overlay layout-menu-toggle"></div>
+    </div>
+    <script src="~/admin/jquery/jquery.js"></script>
+    <script src="~/admin/popper/popper.js"></script>
+    <script src="~/admin/js/bootstrap.js"></script>
+    <script src="~/admin/perfect-scrollbar/perfect-scrollbar.js"></script>
+
+    <script src="~/admin/js/menu.js"></script>
+    <!-- endbuild -->
+    <!-- Vendors JS -->
+    <!--  JS -->
+    <script src="~/js/orderscript.js"></script>
+
+    <!-- /JS -->
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+    <script src="~/js/jquery.datatables.min.js"></script>
+
+
+    <!-- Main JS -->
+    <script src="~/admin/js/main.js"></script>
+
+    <!-- Page JS -->
+    <!-- Place this tag in your head or just before your close body tag. -->
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
+</body>
+</html>
